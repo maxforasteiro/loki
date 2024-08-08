@@ -179,7 +179,7 @@ resource "aws_lambda_function" "this" {
   role          = aws_iam_role.this.arn
   kms_key_arn   = var.kms_key_arn
 
-  image_uri        = var.lambda_promtail_image != "" ? var.lambda_promtail_image : null
+  # image_uri        = var.lambda_promtail_image != "" ? var.lambda_promtail_image : null
   filename         = var.lambda_promtail_image == "" ? local.archive_path : null
   source_code_hash = var.lambda_promtail_image == "" ? data.archive_file.lambda[0].output_base64sha256 : null
   runtime          = var.lambda_promtail_image == "" ? "provided.al2023" : null
